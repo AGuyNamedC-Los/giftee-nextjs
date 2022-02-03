@@ -1,0 +1,47 @@
+.navbar {
+    width: 100%;
+    max-width: 70rem;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    text-align: center;
+}
+
+.links {
+    width: 100%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.link {
+    width: 100%;
+    max-width: 5rem;
+    margin: 0 0.5rem;
+    text-align: center;
+}
+
+.link:hover {
+    cursor: pointer;
+}
+
+.link hr {
+    visibility: hidden;
+    border: 2px solid black;
+    width: 100%;
+    max-width: 4rem;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.link:hover hr{
+    visibility: visible;
+}
+
+
+
