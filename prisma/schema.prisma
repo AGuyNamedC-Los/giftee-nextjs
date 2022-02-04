@@ -12,9 +12,9 @@ datasource db {
 
 model Users {
   id String @id @default(cuid())
-  email String
-  password String
+  email String @unique
   firstname String
   lastname String
-  giftList Json?
+  isActivated Boolean @default(false)
+  giftList Json[]
 }
