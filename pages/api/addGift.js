@@ -2,18 +2,35 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const AddGift = async (req, res) => {
-    const {itemName, price, color, size, storeLink, notes} = req.body;
-    // const result = await prisma.User.findMany({
-    //     where: {
-    //         firstname: "carlos"
-    //     }
-    // })
-    // console.log(result.length)
+    const {email, itemName, price, color, size, storeLink, notes} = req.body;
+    const userExists = await prisma.User.findUnique({
+        where: {
+            email: email
+        }
+    })
 
-    // if (result.length == 0) {
-    //     res.status(200).json({ message: "user does not exist"});
-    //     return;
-    // }
+    if (!userExists) {
+        res.status(200).json({ message: "user does not exist"});
+        return;
+    }
+
+    const addGift = await prisma.User.update({
+        where: {
+            email: email
+        },
+        data: {
+            giftList: {
+                update: {
+                    itemName: {push: itemName},
+                    price: {push: parseInt(price)},
+                    color: {push: color},
+                    size: {push: size},
+                    storeLink: {push: storeLink},
+                    notes: {push: notes},
+                }
+            }
+        }
+    });
     
     res.status(200).json({ message: "adding gift" })
 }
@@ -50,3 +67,18 @@ export default AddGift;
 //         }
 //     }
 // });
+
+// case when i have two awaits for prisma and doesn;t matter which goes first
+// const deletePosts = prisma.post.deleteMany({
+//     where: {
+//       authorId: 7,
+//     },
+//   })
+  
+//   const deleteUser = prisma.user.delete({
+//     where: {
+//       id: 7,
+//     },
+//   })
+  
+//   const transaction = await prisma.$transaction([deletePosts, deleteUser])
