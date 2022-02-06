@@ -32,7 +32,8 @@ const AddGift = async (req, res) => {
         }
     });
     
-    res.status(200).json({ message: "adding gift" })
+    // res.status(200).json({ message: "adding gift" })
+    res.redirect(307, '/'); // currently redirects to home
 }
 
 export default AddGift;
