@@ -1,6 +1,15 @@
 import styles from '../styles/InputField.module.css'
 
-const InputField = (props) => {
+export interface InputFieldProps {
+    label: string;
+    inputType: string;
+    inputId: string;
+    inputName: string;
+    placeholder: string;
+    errorMessage: string;
+}
+
+const InputField = (props: InputFieldProps) => {
     return (
         <div className={styles.inputField}>
             <label>{props.label}</label>

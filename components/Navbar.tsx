@@ -20,8 +20,6 @@ const Navbar = () => {
                     <a>SIGN UP</a>
                     <hr></hr>
                 </div>
-                
-
             </div>
         </nav>
     );

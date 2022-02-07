@@ -1,34 +1,39 @@
+# Giftee - NEXTjs
+
+A social media-esque website that allows you to manage a gift list that can be compromised of multiple items from other online stores. Gift lists can also be viewed by other people who search up your username
+
+# Motivation
+
+I restarted this project as a means to practice using nextjs and typescript
+
+# Technological Tools Used
+
+- [NEXTjs](https://nextjs.org/)
+- Javascript
+- Typescript
+- [Prisma](https://www.prisma.io/)
+- HTML5
+- CSS3
+
+# Github Code Navigation
+
+- 📂 components - components used throughout the app
+- 📂 pages - where the html for every page is located (except for the api folder)
+  - 📂 api  - api routes that process logic then redirect to the react pages
+    - addGift.tsx
+    - addUser.tsx
+    - deleteGift.tsx
+    - updateGift.tsx
+  - 📂 search
+    - [user].js - placeholder
+    - index.tsx - search page
+  - _app.tsx - 
+  - index.tsx - home page component
+  - login.tsx - login page
+  - signUp.tsx - sign up page
+- 📂 prisma
+  - schema.prisma - describes the schema of the postgres database
+- 📁 public - favicons and png(s)
+- 📂 styles - css for the components and global website
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

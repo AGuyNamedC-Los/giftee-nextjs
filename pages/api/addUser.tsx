@@ -1,11 +1,23 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-const AddUser = async (req, res) => {
-    const {email, username, firstname, lastname, password, confirmPassword} = req.body;
-    console.log(req.body)
+interface MyNextApiRequest extends NextApiRequest{
+    body: {
+        email: string;
+        username: string;
+        firstname: string;
+        lastname: string;
+        password: string;
+        confirmPassword: string;
+    }
+}
 
-    const result = await prisma.User.findMany({
+const AddUser = async (req: MyNextApiRequest, res: NextApiResponse) => {
+    const {email, username, firstname, lastname, password, confirmPassword} = req.body;
+
+    // could probably change this to findUnique
+    const result = await prisma.user.findMany({
         where : {
             OR: [{ 
                 email: email, 
@@ -19,7 +31,7 @@ const AddUser = async (req, res) => {
         return;
     }
 
-    const addUser = await prisma.User.create({
+    const addUser = await prisma.user.create({
         data: {
             email: email,
             username: username,

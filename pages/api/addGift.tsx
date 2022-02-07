@@ -1,10 +1,22 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-const AddGift = async (req, res) => {
+export interface MyNextApiRequest extends NextApiRequest {
+    body: {
+        email: string;
+        itemName: string;
+        price: string;
+        color: string;
+        size: string;
+        storeLink: string;
+        notes: string;
+    }
+}
+
+const AddGift = async (req: MyNextApiRequest, res: NextApiResponse) => {
     const {email, itemName, price, color, size, storeLink, notes} = req.body;
-    console.log(req.body);
-    const userExists = await prisma.User.findUnique({
+    const userExists = await prisma.user.findUnique({
         where: {
             email: email
         }
@@ -15,7 +27,7 @@ const AddGift = async (req, res) => {
         return;
     }
 
-    const addGift = await prisma.User.update({
+    const addGift = await prisma.user.update({
         where: {
             email: email
         },
