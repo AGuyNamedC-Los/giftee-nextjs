@@ -2,7 +2,8 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const AddUser = async (req, res) => {
-    const {email, username, firstname, lastname} = req.body;
+    const {email, username, firstname, lastname, password, confirmPassword} = req.body;
+    console.log(req.body)
 
     const result = await prisma.User.findMany({
         where : {

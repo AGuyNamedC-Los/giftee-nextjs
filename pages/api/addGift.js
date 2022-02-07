@@ -3,6 +3,7 @@ const prisma = new PrismaClient();
 
 const AddGift = async (req, res) => {
     const {email, itemName, price, color, size, storeLink, notes} = req.body;
+    console.log(req.body);
     const userExists = await prisma.User.findUnique({
         where: {
             email: email
