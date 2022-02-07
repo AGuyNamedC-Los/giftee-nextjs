@@ -1,0 +1,8 @@
+.authFormButton {
+    border: solid;
+    margin: .25rem 1rem;
+    border-radius: 5px;
+    padding: .5rem;
+    font-size: 1rem;
+    font-weight: 700;
+}

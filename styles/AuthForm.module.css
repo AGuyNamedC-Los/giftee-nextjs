@@ -1,0 +1,18 @@
+.title {
+    text-align: center;
+}
+
+.authForm {
+    border: solid;
+    width: 100%;
+    max-width: 27rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding-bottom: 1rem;
+}
+
+.authForm:not(:nth-child()) > * {
+    /* display: none; */
+}

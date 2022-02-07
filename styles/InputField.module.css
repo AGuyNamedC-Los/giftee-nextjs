@@ -1,0 +1,31 @@
+.inputField {
+    display: flex;
+    flex-direction: column;
+    /* width: 100%;
+    max-width: 30rem; */
+    /* margin-left: 10rem; */
+    margin: .25rem 1rem;
+}
+
+.inputField label {
+    font-weight: 600;
+}
+
+.inputField input {
+    border: solid;
+    padding: .5rem;
+    margin: .25rem 0;
+    border-radius: 5px;
+}
+
+.inputField input::placeholder {
+    border: solid;
+    position: absolute;
+}
+
+.inputField p {
+    display: none;
+    padding: 0;
+    margin: 0;
+    font-size: .8rem;
+}
