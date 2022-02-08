@@ -8,10 +8,10 @@ I restarted this project as a means to practice using nextjs and typescript
 
 # Technological Tools Used
 
-- [NEXTjs](https://nextjs.org/)
+- [NEXTjs](https://nextjs.org/) - allows you to build server-side rendering and static web applications using React
 - Javascript
 - Typescript
-- [Prisma](https://www.prisma.io/)
+- [Prisma](https://www.prisma.io/) - Prisma is an open source next-generation ORM (object relational mapping)
 - HTML5
 - CSS3
 

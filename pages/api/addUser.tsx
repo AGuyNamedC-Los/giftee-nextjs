@@ -1,5 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
+import { postMethodOnly } from "../middleware/postMethodOnly";
+import { hash } from 'bcrypt';
+
 const prisma = new PrismaClient();
 
 interface MyNextApiRequest extends NextApiRequest{
@@ -13,11 +16,11 @@ interface MyNextApiRequest extends NextApiRequest{
     }
 }
 
-const AddUser = async (req: MyNextApiRequest, res: NextApiResponse) => {
+const AddUser = postMethodOnly(async (req: MyNextApiRequest, res: NextApiResponse) => {
     const {email, username, firstname, lastname, password, confirmPassword} = req.body;
 
     // could probably change this to findUnique
-    const result = await prisma.user.findMany({
+    const userExists = await prisma.user.findFirst({
         where : {
             OR: [{ 
                 email: email, 
@@ -26,31 +29,35 @@ const AddUser = async (req: MyNextApiRequest, res: NextApiResponse) => {
         }
     });
 
-    if (result.length != 0) {
+    if (userExists) {
         res.status(200).json({ message: "email or username already exists!" });
         return;
     }
 
-    const addUser = await prisma.user.create({
-        data: {
-            email: email,
-            username: username,
-            firstname: firstname,
-            lastname: lastname,
-            giftList: {
-                create: {
-                    itemName: [],
-                    price: [],
-                    color: [],
-                    size: [],
-                    storeLink: [],
-                    notes: [],
+    hash(password, 12, async (err, hash) => {
+        // Store hash in your password DB.
+        const addUser = await prisma.user.create({
+            data: {
+                email: email,
+                username: username,
+                password: hash,
+                firstname: firstname,
+                lastname: lastname,
+                giftList: {
+                    create: {
+                        itemName: [],
+                        price: [],
+                        color: [],
+                        size: [],
+                        storeLink: [],
+                        notes: [],
+                    }
                 }
             }
-        }
+        });
     });
 
     res.status(200).json({ message: "added user" })
-}
+})
 
 export default AddUser;
